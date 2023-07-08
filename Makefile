@@ -1,7 +1,10 @@
 .PHONY: build
 
 build: setup.py
-	python setup.py build_ext --inplace && python3 setup.py sdist
+	python3 setup.py build_ext --inplace && python3 setup.py sdist
+
+wheel: build
+	python3 setup.py bdist_wheel
 
 .PHONY: upload
 
@@ -21,4 +24,4 @@ clean:
 .PHONY: test
 
 test:
-	python -m unittest
+	python3 -m unittest
